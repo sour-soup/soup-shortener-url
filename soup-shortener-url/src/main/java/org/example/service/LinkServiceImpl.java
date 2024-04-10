@@ -1,21 +1,18 @@
-package org.example.service.impl;
+package org.example.service;
 
+import org.example.exception.EntityNotFoundException;
 import org.example.repository.LinkRepository;
 import org.example.repository.dao.IdDao;
 import org.example.repository.dao.LinkDao;
-import org.example.service.LinkService;
 import org.example.service.model.LongLink;
 import org.example.service.model.ShortLink;
 import org.example.utils.BaseConversion;
 import org.example.utils.BaseConversionException;
 
-import java.util.Random;
-import java.util.random.RandomGenerator;
-
 public class LinkServiceImpl implements LinkService {
     private final LinkRepository linkRepository;
-    private static Long MIN_ID = 1L;
-    private static Long MAX_ID = 56800235583L;
+    private static final Long MIN_ID = 1L;
+    private static final Long MAX_ID = 56_800_235_583L;
 
     public LinkServiceImpl(LinkRepository linkRepository) {
         this.linkRepository = linkRepository;
@@ -29,19 +26,19 @@ public class LinkServiceImpl implements LinkService {
             String link = BaseConversion.toBase(idDao.id());
             return new ShortLink(link);
         }
-        Long id = MIN_ID + (long) (Math.random() * (MAX_ID - MIN_ID));
-        while (linkRepository.checkId(new IdDao(id)))
+        Long id;
+        do {
             id = MIN_ID + (long) (Math.random() * (MAX_ID - MIN_ID));
+        } while (linkRepository.checkId(new IdDao(id)));
         String link = BaseConversion.toBase(id);
         linkRepository.addLink(new IdDao(id), linkDao);
         return new ShortLink(link);
     }
 
     @Override
-    public LongLink getLink(ShortLink shortLink) throws BaseConversionException {
+    public LongLink getLink(ShortLink shortLink) throws BaseConversionException, EntityNotFoundException {
         Long id = BaseConversion.fromBase(shortLink.link());
-        if (!linkRepository.checkId(new IdDao(id)))
-            throw new RuntimeException(); //допишу потом
+        if (!linkRepository.checkId(new IdDao(id))) throw new EntityNotFoundException("the link was not found");
         LinkDao linkDao = linkRepository.getLink(new IdDao(id));
         return new LongLink(linkDao.link());
     }
