@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="28a0d377-561b-45d0-8eb9-0a932989cbf1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/caches/8.7/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/8.7/kotlin-dsl/accessors/82981b77b21d05a902552adeb5fc8e48-PS/metadata.bin" beforeDir="false" afterPath="$PROJECT_DIR$/caches/8.7/kotlin-dsl/accessors/82981b77b21d05a902552adeb5fc8e48-PS/metadata.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/8.7/kotlin-dsl/accessors/82981b77b21d05a902552adeb5fc8e48-PS/sources/org/gradle/kotlin/dsl/PluginDependencySpecAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/caches/8.7/kotlin-dsl/accessors/82981b77b21d05a902552adeb5fc8e48-PS/sources/org/gradle/kotlin/dsl/PluginDependencySpecAccessors.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-configuration/file-collections/src/main/java/org/gradle/api/internal/file/FileOrUriNotationConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-configuration/file-collections/src/main/java/org/gradle/api/internal/file/FileOrUriNotationConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-configuration/kotlin-dsl/src/main/kotlin/org/gradle/kotlin/dsl/concurrent/future.kt" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-configuration/kotlin-dsl/src/main/kotlin/org/gradle/kotlin/dsl/concurrent/future.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-configuration/model-core/src/main/java/org/gradle/api/internal/provider/MappingProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-configuration/model-core/src/main/java/org/gradle/api/internal/provider/MappingProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-configuration/model-core/src/main/java/org/gradle/model/internal/inspect/AbstractExtractedModelRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-configuration/model-core/src/main/java/org/gradle/model/internal/inspect/AbstractExtractedModelRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-configuration/model-core/src/main/java/org/gradle/model/internal/manage/instance/ModelElementState.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-configuration/model-core/src/main/java/org/gradle/model/internal/manage/instance/ModelElementState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-execution/build-cache/src/main/java/org/gradle/caching/internal/controller/DefaultBuildCacheController.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-execution/build-cache/src/main/java/org/gradle/caching/internal/controller/DefaultBuildCacheController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-execution/snapshots/src/main/java/org/gradle/internal/fingerprint/CurrentFileCollectionFingerprint.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-execution/snapshots/src/main/java/org/gradle/internal/fingerprint/CurrentFileCollectionFingerprint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-execution/snapshots/src/main/java/org/gradle/internal/snapshot/RootTrackingFileSystemSnapshotHierarchyVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-execution/snapshots/src/main/java/org/gradle/internal/snapshot/RootTrackingFileSystemSnapshotHierarchyVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-runtime/base-services/src/main/java/org/gradle/internal/resources/ExclusiveAccessResourceLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-runtime/base-services/src/main/java/org/gradle/internal/resources/ExclusiveAccessResourceLock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-runtime/bootstrap/src/main/java/org/gradle/launcher/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-runtime/bootstrap/src/main/java/org/gradle/launcher/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-runtime/files/src/test/groovy/org/gradle/api/internal/file/pattern/PatternStepFactoryTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-runtime/files/src/test/groovy/org/gradle/api/internal/file/pattern/PatternStepFactoryTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-runtime/launcher/src/main/java/org/gradle/tooling/internal/provider/action/BuildActionSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/core-runtime/launcher/src/main/java/org/gradle/tooling/internal/provider/action/BuildActionSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/documentation/docs/src/docs/dsl/org.gradle.nativeplatform.BuildType.xml" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/documentation/docs/src/docs/dsl/org.gradle.nativeplatform.BuildType.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/documentation/docs/src/docs/userguide/authoring-builds/other/working_with_files.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/documentation/docs/src/docs/userguide/authoring-builds/other/working_with_files.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/documentation/docs/src/snippets/bestPractices/logicDuringConfiguration-do/kotlin/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/documentation/docs/src/snippets/bestPractices/logicDuringConfiguration-do/kotlin/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/documentation/docs/src/snippets/groovy/groovyDependency/common/src/test/groovy/org/gradle/PersonTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/documentation/docs/src/snippets/groovy/groovyDependency/common/src/test/groovy/org/gradle/PersonTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/documentation/docs/src/snippets/tutorial/configureTaskUsingProjectProperty/groovy/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/documentation/docs/src/snippets/tutorial/configureTaskUsingProjectProperty/groovy/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/ide/ide/src/main/java/org/gradle/plugins/ide/eclipse/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/ide/ide/src/main/java/org/gradle/plugins/ide/eclipse/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/ide/tooling-api/src/main/java/org/gradle/tooling/model/cpp/CppStaticLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/ide/tooling-api/src/main/java/org/gradle/tooling/model/cpp/CppStaticLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/native/platform-native/src/testFixtures/groovy/org/gradle/nativeplatform/fixtures/RequiresInstalledToolChainExtension.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/native/platform-native/src/testFixtures/groovy/org/gradle/nativeplatform/fixtures/RequiresInstalledToolChainExtension.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/native/testing-native/src/main/java/org/gradle/nativeplatform/test/cunit/CUnitTestSuiteBinarySpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/native/testing-native/src/main/java/org/gradle/nativeplatform/test/cunit/CUnitTestSuiteBinarySpec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/software/dependency-management/src/main/java/org/gradle/internal/component/local/model/OpaqueComponentArtifactIdentifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/software/dependency-management/src/main/java/org/gradle/internal/component/local/model/OpaqueComponentArtifactIdentifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/software/dependency-management/src/test/groovy/org/gradle/internal/component/local/model/MissingLocalArtifactMetadataTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/software/dependency-management/src/test/groovy/org/gradle/internal/component/local/model/MissingLocalArtifactMetadataTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/software/resources-gcs/src/main/java/org/gradle/internal/resource/transport/gcp/gcs/ResourceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/software/resources-gcs/src/main/java/org/gradle/internal/resource/transport/gcp/gcs/ResourceMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/software/resources-s3/src/test/groovy/org/gradle/internal/resource/transport/aws/s3/S3ConnectorFactoryTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/software/resources-s3/src/test/groovy/org/gradle/internal/resource/transport/aws/s3/S3ConnectorFactoryTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/software/resources/src/main/java/org/gradle/internal/resource/transfer/ExternalResourceConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/software/resources/src/main/java/org/gradle/internal/resource/transfer/ExternalResourceConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/software/testing-base/src/main/java/org/gradle/api/internal/tasks/testing/worker/WorkerTestClassProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/platforms/software/testing-base/src/main/java/org/gradle/api/internal/tasks/testing/worker/WorkerTestClassProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/subprojects/core-api/src/main/java/org/gradle/api/CircularReferenceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/subprojects/core-api/src/main/java/org/gradle/api/CircularReferenceException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/subprojects/core-api/src/main/java/org/gradle/work/FileChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/subprojects/core-api/src/main/java/org/gradle/work/FileChange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/subprojects/core/src/main/java/org/gradle/api/internal/project/taskfactory/IncrementalTaskAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/subprojects/core/src/main/java/org/gradle/api/internal/project/taskfactory/IncrementalTaskAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/subprojects/core/src/test/groovy/org/gradle/api/internal/collections/ElementSourceSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-4/69955912123c68eecd096b71c66ee211/transformed/unzipped-distribution/gradle-8.7/subprojects/core/src/test/groovy/org/gradle/api/internal/collections/ElementSourceSpec.groovy" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="soup-url" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="soup-url" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="soup-url" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Record" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sour-soup&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="7633ad15-3970-4aea-9ebb-ce6ed3fed685" />
+        <option name="url" value="https://github.com/sour-soup/soup-shortener-url.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2esOhCLwcUSKqKK6pQGO9MY419Q" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.soup-url [testClasses].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;df558257&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/soup-url&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="soup-url [testClasses]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="testClasses" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.soup-url [testClasses]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="28a0d377-561b-45d0-8eb9-0a932989cbf1" name="Changes" comment="" />
+      <created>1712689937587</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712689937587</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="SECOND commit!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="SECOND commit!!!!" />
+  </component>
+</project>
