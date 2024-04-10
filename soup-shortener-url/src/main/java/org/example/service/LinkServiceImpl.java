@@ -10,14 +10,9 @@ import org.example.utils.BaseConversion;
 import org.example.utils.BaseConversionException;
 
 public class LinkServiceImpl implements LinkService {
-    private static final Long MIN_ID = 1L;
-    private static final Long MAX_ID = 56800235583L;
     private final LinkRepository linkRepository;
-<<<<<<<< HEAD:soup-shortener-url/src/main/java/org/example/service/LinkServiceImpl.java
     private static final Long MIN_ID = 1L;
     private static final Long MAX_ID = 56_800_235_583L;
-========
->>>>>>>> origin/main:soup-shortener-url/src/main/java/org/example/service/impl/LinkServiceImpl.java
 
     public LinkServiceImpl(LinkRepository linkRepository) {
         this.linkRepository = linkRepository;
