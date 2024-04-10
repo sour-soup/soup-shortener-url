@@ -3,11 +3,8 @@ package org.example;
 import org.example.controller.LinkController;
 import org.example.controller.dto.LongLinkDto;
 import org.example.controller.dto.ShortLinkDto;
-import org.example.exception.EntityNotFoundException;
 import org.example.repository.LinkRepositoryImpl;
 import org.example.service.LinkServiceImpl;
-import org.example.utils.BaseConversionException;
-
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +13,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("""
+            System.out.print("""
                     SOUP SHORTENER URL!!!
                     Выберете действие:
                     1) Сократить ссылку
@@ -31,9 +28,13 @@ public class Main {
                     String link = scanner.nextLine();
                     try {
                         ShortLinkDto shortLinkDto = linkController.addLink(new LongLinkDto(link));
-                        System.out.println(shortLinkDto.link());
-                    } catch (BaseConversionException ex) {
-                        throw new RuntimeException();
+                        System.out.println("Короткая ссылка: " + shortLinkDto.link());
+                    } catch (Exception ex) {
+                        System.out.println("EXCEPTION!!!");
+                        String message = ex.toString();
+                        System.out.println(message);
+                        System.out.println("Введите любую строку:");
+                        scanner.nextLine();
                     }
                     break;
                 }
@@ -42,10 +43,9 @@ public class Main {
                     String link = scanner.nextLine();
                     try {
                         LongLinkDto longLinkDto = linkController.getLink(new ShortLinkDto(link));
-                        System.out.println(longLinkDto.link());
-                    } catch (BaseConversionException ex) {
-                        throw new RuntimeException();
-                    } catch (EntityNotFoundException ex) {
+                        System.out.println("Ссылка: " + longLinkDto.link());
+                    } catch (Exception ex) {
+                        System.out.println("EXCEPTION!!!");
                         String message = ex.toString();
                         System.out.println(message);
                         System.out.println("Введите любую строку:");
@@ -53,7 +53,8 @@ public class Main {
                     }
                     break;
                 }
-                case 0: return;
+                case 0:
+                    return;
             }
         }
     }
