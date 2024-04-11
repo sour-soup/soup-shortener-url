@@ -9,6 +9,8 @@ import org.example.service.model.ShortLink;
 import org.example.utils.BaseConversion;
 import org.example.utils.BaseConversionException;
 
+import java.util.Random;
+
 public class LinkServiceImpl implements LinkService {
     private final LinkRepository linkRepository;
     private static final Long MIN_ID = 1L;
@@ -27,8 +29,9 @@ public class LinkServiceImpl implements LinkService {
             return new ShortLink(link);
         }
         Long id;
+        Random random = new Random();
         do {
-            id = MIN_ID + (long) (Math.random() * (MAX_ID - MIN_ID));
+            id = random.nextLong(MIN_ID, MAX_ID - MIN_ID);
         } while (linkRepository.checkId(new IdDao(id)));
         String link = BaseConversion.toBase(id);
         linkRepository.addLink(new IdDao(id), linkDao);

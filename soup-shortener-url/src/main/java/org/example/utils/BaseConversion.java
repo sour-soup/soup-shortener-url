@@ -10,7 +10,7 @@ public class BaseConversion {
         if (num < 0)
             throw new BaseConversionException("x must not be negative");
         if (num == 0)
-            return "0";
+            return String.valueOf(ALPHABET.charAt(0));
         long x = num;
         StringBuilder res = new StringBuilder();
         while (x > 0) {
