@@ -11,7 +11,7 @@ import org.example.utils.BaseConversionException;
 import org.example.utils.URLValidator;
 
 public class LinkController {
-    private static final String prefix = "soup-url.ru/";
+    private static final String prefix = "https://soup-url.ru/";
     private final LinkService linkService;
 
     public LinkController(LinkService linkService) {
@@ -31,8 +31,8 @@ public class LinkController {
             throws BaseConversionException, EntityNotFoundException, ParseShortLinkException {
         if (shortLinkDto.link().indexOf(prefix) != 0)
             throw new ParseShortLinkException("invalid address format");
-//        if (!URLValidator.isValid(shortLinkDto.link()))
-//            throw new ParseShortLinkException("invalid address format");
+        if (!URLValidator.isValid(shortLinkDto.link()))
+            throw new ParseShortLinkException("invalid address format");
 
         String link = shortLinkDto.link().substring(prefix.length());
         LongLink longLink = linkService.getLink(new ShortLink(link));
