@@ -4,7 +4,14 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+native/
+jdks/
+daemon/
+.tmp/
+../.idea
+
 ### IntelliJ IDEA ###
+.idea/
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
@@ -34,6 +41,7 @@ bin/
 /dist/
 /nbdist/
 /.nb-gradle/
+
 
 ### VS Code ###
 .vscode/
