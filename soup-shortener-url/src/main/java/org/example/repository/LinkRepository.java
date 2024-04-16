@@ -1,17 +1,17 @@
 package org.example.repository;
 
-import org.example.repository.dao.IdDao;
-import org.example.repository.dao.LinkDao;
+import org.example.repository.entity.IdEntity;
+import org.example.repository.entity.LinkEntity;
 
 public interface LinkRepository {
-    void addLink(IdDao idDao, LinkDao linkDao);
+    void addLink(IdEntity idEntity, LinkEntity linkEntity);
 
-    LinkDao getLink(IdDao idDao);
+    LinkEntity getLink(IdEntity idEntity);
 
-    IdDao getId(LinkDao linkDao);
+    IdEntity getId(LinkEntity linkEntity);
 
-    Boolean checkLink(LinkDao linkDao);
+    Boolean checkLink(LinkEntity linkEntity);
 
-    Boolean checkId(IdDao idDao);
+    Boolean checkId(Long id);
 
 }

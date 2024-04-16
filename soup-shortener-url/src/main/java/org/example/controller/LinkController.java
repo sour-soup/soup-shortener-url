@@ -4,9 +4,9 @@ import org.example.controller.dto.LongLinkDto;
 import org.example.controller.dto.ShortLinkDto;
 import org.example.exception.EntityNotFoundException;
 import org.example.exception.ParseShortLinkException;
+import org.example.model.LongLink;
+import org.example.model.ShortLink;
 import org.example.service.LinkService;
-import org.example.service.model.LongLink;
-import org.example.service.model.ShortLink;
 import org.example.utils.BaseConversionException;
 import org.example.utils.URLValidator;
 

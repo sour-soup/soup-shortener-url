@@ -1,4 +1,4 @@
-package org.example.service.model;
+package org.example.model;
 
 
 public record LongLink(String link) {

@@ -1,34 +1,34 @@
 package org.example.repository;
 
 import org.example.database.EmulationDatabase;
-import org.example.repository.dao.IdDao;
-import org.example.repository.dao.LinkDao;
+import org.example.repository.entity.IdEntity;
+import org.example.repository.entity.LinkEntity;
 
 public class LinkRepositoryImpl implements LinkRepository {
     @Override
-    public void addLink(IdDao idDao, LinkDao linkDao) {
-        EmulationDatabase.getInstance().addLink(idDao.id(), linkDao.link());
+    public void addLink(IdEntity idEntity, LinkEntity linkEntity) {
+        EmulationDatabase.getInstance().addLink(idEntity.id(), linkEntity.link());
     }
 
     @Override
-    public LinkDao getLink(IdDao idDao) {
-        String link = EmulationDatabase.getInstance().getLink(idDao.id());
-        return new LinkDao(link);
+    public LinkEntity getLink(IdEntity idEntity) {
+        String link = EmulationDatabase.getInstance().getLink(idEntity.id());
+        return new LinkEntity(link);
     }
 
     @Override
-    public IdDao getId(LinkDao linkDao) {
-        Long id = EmulationDatabase.getInstance().getId(linkDao.link());
-        return new IdDao(id);
+    public IdEntity getId(LinkEntity linkEntity) {
+        Long id = EmulationDatabase.getInstance().getId(linkEntity.link());
+        return new IdEntity(id);
     }
 
     @Override
-    public Boolean checkLink(LinkDao linkDao) {
-        return EmulationDatabase.getInstance().checkLink(linkDao.link());
+    public Boolean checkLink(LinkEntity linkEntity) {
+        return EmulationDatabase.getInstance().checkLink(linkEntity.link());
     }
 
     @Override
-    public Boolean checkId(IdDao idDao) {
-        return EmulationDatabase.getInstance().checkId(idDao.id());
+    public Boolean checkId(Long id) {
+        return EmulationDatabase.getInstance().checkId(id);
     }
 }
