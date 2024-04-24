@@ -2,8 +2,7 @@ package org.example;
 
 import org.example.controller.AuthorizeController;
 import org.example.controller.LinkController;
-import org.example.controller.dto.LongLinkDto;
-import org.example.controller.dto.ShortLinkDto;
+import org.example.controller.dto.LinkDto;
 import org.example.controller.dto.UserDto;
 import org.example.jdbc.JdbcUtils;
 import org.example.repository.Impl.AuthorizeRepositoryImpl;
@@ -11,6 +10,7 @@ import org.example.repository.Impl.LinkRepositoryImpl;
 import org.example.service.Impl.AuthorizeServiceImpl;
 import org.example.service.Impl.LinkServiceImpl;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -73,6 +73,7 @@ public class Main {
                         Выберете действие:
                         1) Сократить ссылку
                         2) Получить ссылку
+                        3) Получить все ссылки
                         0) Выйти
                         """);
                 int action = scanner.nextInt();
@@ -82,8 +83,8 @@ public class Main {
                         System.out.println("Введите ссылку:");
                         String link = scanner.nextLine();
                         try {
-                            ShortLinkDto shortLinkDto = linkController.addLink(new UserDto(user), new LongLinkDto(link));
-                            System.out.println("Короткая ссылка: " + shortLinkDto.link());
+                            LinkDto linkDto = linkController.addLink(new UserDto(user), new LinkDto(link, ""));
+                            System.out.println("Короткая ссылка: " + linkDto.shortLink());
                         } catch (Exception ex) {
                             System.out.println("EXCEPTION!!!");
                             String message = ex.toString();
@@ -97,8 +98,8 @@ public class Main {
                         System.out.println("Введите короткую ссылку:");
                         String link = scanner.nextLine();
                         try {
-                            LongLinkDto longLinkDto = linkController.getLink(new ShortLinkDto(link));
-                            System.out.println("Ссылка: " + longLinkDto.link());
+                            LinkDto longlinkDto = linkController.getLink(new LinkDto(null, link));
+                            System.out.println("Ссылка: " + longlinkDto.longLink());
                         } catch (Exception ex) {
                             System.out.println("EXCEPTION!!!");
                             String message = ex.toString();
@@ -106,6 +107,13 @@ public class Main {
                             System.out.println("Введите любую строку:");
                             scanner.nextLine();
                         }
+                        break;
+                    }
+                    case 3: {
+                        System.out.println("Ссылки:");
+                        List<LinkDto> list = linkController.getUserLinks(new UserDto(user));
+                        for (var p : list)
+                            System.out.println(p.shortLink() + " - " + p.longLink());
                         break;
                     }
                     case 0:

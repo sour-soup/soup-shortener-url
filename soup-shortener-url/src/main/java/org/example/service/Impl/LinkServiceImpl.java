@@ -3,17 +3,17 @@ package org.example.service.Impl;
 import org.example.exception.EntityNotFoundException;
 import org.example.exception.ParseShortLinkException;
 import org.example.repository.LinkRepository;
-import org.example.repository.entity.IdEntity;
 import org.example.repository.entity.LinkEntity;
 import org.example.repository.entity.UserEntity;
 import org.example.service.LinkService;
-import org.example.service.model.LongLink;
-import org.example.service.model.ShortLink;
+import org.example.service.model.Link;
 import org.example.service.model.User;
 import org.example.utils.BaseConversion;
 import org.example.utils.BaseConversionException;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class LinkServiceImpl implements LinkService {
@@ -27,15 +27,15 @@ public class LinkServiceImpl implements LinkService {
     }
 
     @Override
-    public ShortLink addLink(User user, LongLink longLink) throws BaseConversionException {
+    public Link addLink(User user, Link link) throws BaseConversionException {
         try {
-            LinkEntity linkEntity = new LinkEntity(longLink.link());
+            LinkEntity linkEntity = new LinkEntity(link.longLink(), null);
             UserEntity userEntity = new UserEntity(user.login());
 
             if (linkRepository.checkLink(userEntity, linkEntity)) {
-                IdEntity idEntity = linkRepository.getId(userEntity, linkEntity);
-                String link = BaseConversion.toBase(idEntity.id());
-                return new ShortLink(prefix + link);
+                Long id = linkRepository.getId(userEntity, linkEntity);
+                String shortLink = BaseConversion.toBase(id);
+                return new Link(link.longLink(), prefix + shortLink);
             }
             Long id;
             //Позже заменю на snowflake
@@ -43,27 +43,42 @@ public class LinkServiceImpl implements LinkService {
             do {
                 id = random.nextLong(MIN_ID, MAX_ID - MIN_ID);
             } while (linkRepository.checkId(id));
-            String link = BaseConversion.toBase(id);
-            IdEntity idEntity = new IdEntity(id);
-            linkRepository.addLink(userEntity, idEntity, linkEntity);
-            return new ShortLink(prefix + link);
+            String shortLink = BaseConversion.toBase(id);
+            linkEntity = new LinkEntity(link.longLink(), id);
+            linkRepository.addLink(userEntity, linkEntity);
+            return new Link(link.longLink(), prefix + shortLink);
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
     }
 
     @Override
-    public LongLink getLink(ShortLink shortLink) throws BaseConversionException, EntityNotFoundException, ParseShortLinkException {
-        if (shortLink.link().indexOf(prefix) != 0) throw new ParseShortLinkException("invalid address format");
-        String link = shortLink.link().substring(prefix.length());
-        Long id = BaseConversion.fromBase(link);
+    public Link getLink(Link link) throws BaseConversionException, EntityNotFoundException, ParseShortLinkException {
+        if (link.shortLink().indexOf(prefix) != 0) throw new ParseShortLinkException("invalid address format");
+        String shortLink = link.shortLink().substring(prefix.length());
+        Long id = BaseConversion.fromBase(shortLink);
         try {
             if (!linkRepository.checkId(id)) throw new EntityNotFoundException("the link was not found");
-            LinkEntity linkEntity = linkRepository.getLink(new IdEntity(id));
-            return new LongLink(linkEntity.link());
+            LinkEntity linkEntity = linkRepository.getLink(id);
+            return new Link(linkEntity.link(), link.shortLink());
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
     }
 
+    @Override
+    public List<Link> getUserLinks(User user) {
+        try {
+            List<LinkEntity> entityList = linkRepository.getUserLinks(new UserEntity(user.login()));
+            List<Link> list = new ArrayList<>();
+            for (var p : entityList) {
+                String shortLink = prefix + BaseConversion.toBase(p.id());
+                list.add(new Link(p.link(), shortLink));
+            }
+            return list;
+        } catch (SQLException | BaseConversionException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

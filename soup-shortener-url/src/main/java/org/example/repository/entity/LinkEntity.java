@@ -1,4 +1,4 @@
 package org.example.repository.entity;
 
-public record LinkEntity(String link) {
+public record LinkEntity(String link, Long id) {
 }
