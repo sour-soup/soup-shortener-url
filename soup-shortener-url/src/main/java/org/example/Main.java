@@ -5,18 +5,19 @@ import org.example.controller.LinkController;
 import org.example.controller.dto.LinkDto;
 import org.example.controller.dto.UserDto;
 import org.example.jdbc.JdbcUtils;
-import org.example.repository.Impl.AuthorizeRepositoryImpl;
-import org.example.repository.Impl.LinkRepositoryImpl;
-import org.example.service.Impl.AuthorizeServiceImpl;
-import org.example.service.Impl.LinkServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        LinkController linkController = new LinkController(new LinkServiceImpl(new LinkRepositoryImpl()));
-        AuthorizeController authorizeController = new AuthorizeController(new AuthorizeServiceImpl(new AuthorizeRepositoryImpl()));
+        ApplicationContext context = new ClassPathXmlApplicationContext("appcontext.xml");
+
+
+        LinkController linkController = (LinkController) context.getBean("LinkController");
+        AuthorizeController authorizeController = (AuthorizeController) context.getBean("AuthorizeController");
 
         System.out.println(JdbcUtils.createConnection());
         Scanner scanner = new Scanner(System.in);
