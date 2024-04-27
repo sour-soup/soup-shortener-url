@@ -1,4 +1,6 @@
 package org.example.controller.dto;
 
-public record UserDto(String login) {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record UserDto(@JsonProperty String login) {
 }

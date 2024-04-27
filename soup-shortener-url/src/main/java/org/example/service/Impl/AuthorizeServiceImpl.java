@@ -5,9 +5,11 @@ import org.example.repository.AuthorizeRepository;
 import org.example.repository.entity.UserEntity;
 import org.example.service.AuthorizeService;
 import org.example.service.model.User;
+import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 
+@Service
 public class AuthorizeServiceImpl implements AuthorizeService {
     private final AuthorizeRepository authorizeRepository;
 
@@ -15,6 +17,7 @@ public class AuthorizeServiceImpl implements AuthorizeService {
         this.authorizeRepository = authorizeRepository;
     }
 
+    @Override
     public void login(User user) throws AuthorizeException {
         try {
             if (!authorizeRepository.checkUser(new UserEntity(user.login())))
@@ -24,6 +27,7 @@ public class AuthorizeServiceImpl implements AuthorizeService {
         }
     }
 
+    @Override
     public void register(User user) throws AuthorizeException {
         try {
             if (authorizeRepository.checkUser(new UserEntity(user.login())))
