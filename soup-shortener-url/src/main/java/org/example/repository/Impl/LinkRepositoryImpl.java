@@ -1,9 +1,9 @@
 package org.example.repository.Impl;
 
-import org.example.jdbc.JdbcUtils;
 import org.example.repository.LinkRepository;
 import org.example.repository.entity.LinkEntity;
 import org.example.repository.entity.UserEntity;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,9 +12,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class LinkRepositoryImpl implements LinkRepository {
+    private final Connection connection;
+
+    public LinkRepositoryImpl(Connection connection) {
+        this.connection = connection;
+    }
+
+    @Override
     public void addLink(UserEntity userEntity, LinkEntity linkEntity) throws SQLException {
-        Connection connection = JdbcUtils.getConnection();
         String sql = "INSERT INTO Links (id, longLink, user_id) VALUES (?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         preparedStatement.setLong(1, linkEntity.id());
@@ -25,9 +32,9 @@ public class LinkRepositoryImpl implements LinkRepository {
         preparedStatement.close();
     }
 
+    @Override
     public LinkEntity getLink(Long id) throws SQLException {
         String sql = "SELECT longLink FROM Links WHERE id = ?";
-        Connection connection = JdbcUtils.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setLong(1, id);
         ResultSet resultSet = statement.executeQuery();
@@ -37,7 +44,6 @@ public class LinkRepositoryImpl implements LinkRepository {
 
     public Long getId(UserEntity userEntity, LinkEntity linkEntity) throws SQLException {
         String sql = "SELECT id FROM Links WHERE user_id = ? AND longLink = ?";
-        Connection connection = JdbcUtils.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, getUserId(userEntity.login()));
         statement.setString(2, linkEntity.link());
@@ -48,7 +54,6 @@ public class LinkRepositoryImpl implements LinkRepository {
 
     public Boolean checkLink(UserEntity userEntity, LinkEntity linkEntity) throws SQLException {
         String sql = "SELECT id FROM Links WHERE user_id = ? AND longLink = ?";
-        Connection connection = JdbcUtils.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, getUserId(userEntity.login()));
         statement.setString(2, linkEntity.link());
@@ -58,7 +63,6 @@ public class LinkRepositoryImpl implements LinkRepository {
 
     public Boolean checkId(Long id) throws SQLException {
         String sql = "SELECT longLink FROM Links WHERE id = ?";
-        Connection connection = JdbcUtils.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setLong(1, id);
         ResultSet resultSet = statement.executeQuery();
@@ -67,7 +71,6 @@ public class LinkRepositoryImpl implements LinkRepository {
 
     public List<LinkEntity> getUserLinks(UserEntity userEntity) throws SQLException {
         String sql = "SELECT id, longLink FROM Links WHERE user_id = ?";
-        Connection connection = JdbcUtils.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, getUserId(userEntity.login()));
         ResultSet resultSet = statement.executeQuery();
@@ -79,7 +82,6 @@ public class LinkRepositoryImpl implements LinkRepository {
 
     private Integer getUserId(String login) throws SQLException {
         String sql = "SELECT id FROM Users WHERE login = ?";
-        Connection connection = JdbcUtils.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, login);
         ResultSet resultSet = statement.executeQuery();

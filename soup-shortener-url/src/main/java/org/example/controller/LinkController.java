@@ -1,18 +1,19 @@
 package org.example.controller;
 
 import org.example.controller.dto.LinkDto;
-import org.example.controller.dto.UserDto;
-import org.example.exception.EntityNotFoundException;
 import org.example.exception.ParseShortLinkException;
 import org.example.service.LinkService;
 import org.example.service.model.Link;
 import org.example.service.model.User;
 import org.example.utils.BaseConversionException;
 import org.example.utils.URLValidator;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@RestController
+@RequestMapping(value = "/api/v1/links")
 public class LinkController {
     private final LinkService linkService;
 
@@ -20,22 +21,17 @@ public class LinkController {
         this.linkService = linkService;
     }
 
-    public LinkDto addLink(UserDto userDto, LinkDto linkDto) throws BaseConversionException, ParseShortLinkException {
+    @PostMapping(value = "/addLink")
+    public LinkDto addLink(@RequestParam String login, @RequestBody LinkDto linkDto) throws BaseConversionException, ParseShortLinkException {
         if (!URLValidator.isValid(linkDto.longLink())) throw new ParseShortLinkException("invalid address format");
 
-        Link link = linkService.addLink(new User(userDto.login()), new Link(linkDto.longLink(), linkDto.shortLink()));
+        Link link = linkService.addLink(new User(login), new Link(linkDto.longLink(), linkDto.shortLink()));
         return new LinkDto(link.longLink(), link.shortLink());
     }
 
-    public LinkDto getLink(LinkDto linkDto) throws BaseConversionException, EntityNotFoundException, ParseShortLinkException {
-        if (!URLValidator.isValid(linkDto.shortLink())) throw new ParseShortLinkException("invalid address format");
-
-        Link link = linkService.getLink(new Link("", linkDto.shortLink()));
-        return new LinkDto(link.longLink(), link.shortLink());
-    }
-
-    public List<LinkDto> getUserLinks(UserDto userDto) {
-        List<Link> linkList = linkService.getUserLinks(new User(userDto.login()));
+    @GetMapping(value = "/getLinks")
+    public List<LinkDto> getUserLinks(@RequestParam String login) {
+        List<Link> linkList = linkService.getUserLinks(new User(login));
         List<LinkDto> list = new ArrayList<>();
         for (var p : linkList)
             list.add(new LinkDto(p.longLink(), p.shortLink()));
