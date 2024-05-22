@@ -1,11 +1,10 @@
 package org.example.repository;
 
-import org.example.repository.entity.UserEntity;
+import org.example.entity.UserEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.sql.SQLException;
+public interface AuthorizeRepository extends JpaRepository<UserEntity, Long> {
+    boolean existsByLogin(String login);
 
-public interface AuthorizeRepository {
-    void addUser(UserEntity userEntity) throws SQLException;
-
-    Boolean checkUser(UserEntity userEntity) throws SQLException;
+    UserEntity getByLogin(String login);
 }

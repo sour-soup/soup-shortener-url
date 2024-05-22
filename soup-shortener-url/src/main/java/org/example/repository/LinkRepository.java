@@ -1,21 +1,15 @@
 package org.example.repository;
 
-import org.example.repository.entity.LinkEntity;
-import org.example.repository.entity.UserEntity;
+import org.example.entity.LinkEntity;
+import org.example.entity.UserEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.sql.SQLException;
 import java.util.List;
 
-public interface LinkRepository {
-    void addLink(UserEntity userEntity, LinkEntity linkEntity) throws SQLException;
+public interface LinkRepository extends JpaRepository<LinkEntity, Long> {
+    boolean existsByUrlAndUserId(String url, Long userId);
 
-    LinkEntity getLink(Long id) throws SQLException;
+    Long getIdByUrlAndUserId(String url, Long userId);
 
-    Long getId(UserEntity userEntity, LinkEntity linkEntity) throws SQLException;
-
-    Boolean checkLink(UserEntity userEntity, LinkEntity linkEntity) throws SQLException;
-
-    Boolean checkId(Long id) throws SQLException;
-
-    List<LinkEntity> getUserLinks(UserEntity userEntity) throws SQLException;
+    List<LinkEntity> getLinkEntitiesByUser(UserEntity user);
 }

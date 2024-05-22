@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:16.3
+    environment:
+      POSTGRES_DB: link-shortener
+      POSTGRES_USER: "soup"
+      POSTGRES_PASSWORD: "soup"
+    ports:
+      - "5432:5432"
