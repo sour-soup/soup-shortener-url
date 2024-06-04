@@ -1,12 +1,10 @@
 package org.example.controller;
 
 import org.example.controller.dto.LinkDto;
-import org.example.exception.ParseShortLinkException;
 import org.example.service.LinkService;
 import org.example.service.model.Link;
 import org.example.service.model.User;
 import org.example.utils.BaseConversionException;
-import org.example.utils.URLValidator;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,9 +20,7 @@ public class LinkController {
     }
 
     @PostMapping(value = "/addLink")
-    public LinkDto addLink(@RequestParam String login, @RequestBody LinkDto linkDto) throws BaseConversionException, ParseShortLinkException {
-        if (!URLValidator.isValid(linkDto.longLink())) throw new ParseShortLinkException("invalid address format");
-
+    public LinkDto addLink(@RequestParam String login, @RequestBody LinkDto linkDto) throws BaseConversionException {
         Link link = linkService.addLink(new User(login), new Link(linkDto.longLink(), linkDto.shortLink()));
         return new LinkDto(link.longLink(), link.shortLink());
     }

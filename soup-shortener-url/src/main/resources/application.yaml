@@ -1,0 +1,15 @@
+base:
+  url: http://localhost:8080/
+
+spring:
+  application:
+    name: soup-shortener-url
+  datasource:
+    url: jdbc:postgresql://localhost:5432/link-shortener
+    username: soup
+    password: soup
+  liquibase:
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: none
