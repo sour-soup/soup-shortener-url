@@ -1,11 +1,10 @@
-package org.example.service.Impl;
+package org.example.service;
 
 import org.example.entity.LinkEntity;
 import org.example.entity.UserEntity;
 import org.example.exception.EntityNotFoundException;
 import org.example.repository.AuthorizeRepository;
 import org.example.repository.LinkRepository;
-import org.example.service.LinkService;
 import org.example.service.model.Link;
 import org.example.service.model.User;
 import org.example.utils.BaseConversion;
@@ -36,19 +35,20 @@ public class LinkServiceImpl implements LinkService {
         String longLink = link.longLink();
         UserEntity userEntity = authorizeRepository.getByLogin(user.login());
 
+        String shortLink;
         if (linkRepository.existsByUrlAndUserId(longLink, userEntity.getId())) {
             Long id = linkRepository.findByUrlAndUserId(longLink, userEntity.getId()).getId();
-            String shortLink = BaseConversion.toBase(id);
-            return new Link(longLink, shortLink);
+            shortLink = BaseConversion.toBase(id);
+        } else {
+            Long id;
+            Random random = new Random();
+            do {
+                id = (long) (MIN_ID + random.nextDouble() * (MAX_ID - MIN_ID));
+            } while (linkRepository.existsById(id));
+            shortLink = BaseConversion.toBase(id);
+            LinkEntity linkEntity = new LinkEntity(id, longLink, userEntity);
+            linkRepository.save(linkEntity);
         }
-        Long id;
-        Random random = new Random();
-        do {
-            id = random.nextLong(MIN_ID, MAX_ID - MIN_ID);
-        } while (linkRepository.existsById(id));
-        String shortLink = BaseConversion.toBase(id);
-        LinkEntity linkEntity = new LinkEntity(id, longLink, userEntity);
-        linkRepository.save(linkEntity);
         return new Link(longLink, baseUrl + shortLink);
     }
 

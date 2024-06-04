@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-links
+      author: soup
+      changes:
+        - createTable:
+            tableName: links
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_id
+                    references: users(id)
+              - column:
+                  name: url
+                  type: varchar(300)
+                  constraints:
+                    nullable: false
