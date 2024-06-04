@@ -9,7 +9,8 @@ spring:
     username: soup
     password: soup
   liquibase:
-    enabled: false
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
   jpa:
     hibernate:
       ddl-auto: none

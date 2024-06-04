@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-users
+      author: soup
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: login
+                  type: varchar(100)
+                  constraints:
+                    unique: true
+                    nullable: false
+        - createSequence:
+            incrementBy: 50
+            sequenceName: users_seq
+            startValue: 1
