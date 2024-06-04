@@ -4,21 +4,40 @@ services:
     image: postgres:16.3-alpine
     container_name: postgres_container
     environment:
-      POSTGRES_DB: link-shortener
-      POSTGRES_USER: soup
-      POSTGRES_PASSWORD: soup
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
     ports:
-      - "5432:5432"
+      - ${DB_PORT}:5432
+    env_file:
+      - ./local.env
+
+  redis:
+    image: redis:7.2.5-alpine
+    container_name: redis_container
+    ports:
+      - "${REDIS_PORT}:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    env_file:
+      - ./local.env
+
   app:
     build:
       context: .
       dockerfile: soup-shortener-url/Dockerfile
     container_name: springboot_app_container
     ports:
-      - "8080:8080"
+      - "${APP_PORT}:8080"
     depends_on:
       - postgres
+      - redis
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/link-shortener
-      SPRING_DATASOURCE_USERNAME: soup
-      SPRING_DATASOURCE_PASSWORD: soup
+      SPRING_DATASOURCE_URL: ${DB_URL}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASS}
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: ${REDIS_PORT}
+    env_file:
+      - ./local.env

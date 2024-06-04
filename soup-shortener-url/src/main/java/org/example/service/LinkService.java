@@ -11,7 +11,7 @@ import java.util.List;
 public interface LinkService {
     Link addLink(User user, Link link) throws BaseConversionException;
 
-    Link getLink(Link link) throws BaseConversionException, EntityNotFoundException, ParseShortLinkException;
+    String getLink(String shortLink) throws BaseConversionException, EntityNotFoundException, ParseShortLinkException;
 
     List<Link> getUserLinks(User user);
 }

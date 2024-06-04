@@ -5,12 +5,18 @@ spring:
   application:
     name: soup-shortener-url
   datasource:
-    url: jdbc:postgresql://localhost:5432/link-shortener
-    username: soup
-    password: soup
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
   liquibase:
     enabled: true
     change-log: classpath:db/changelog/db.changelog-master.yaml
   jpa:
     hibernate:
       ddl-auto: none
+  cache:
+    type: redis
+  data:
+    redis:
+      host: redis
+      port: ${REDIS_PORT}

@@ -10,6 +10,7 @@ import org.example.service.model.User;
 import org.example.utils.BaseConversion;
 import org.example.utils.BaseConversionException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -53,13 +54,13 @@ public class LinkServiceImpl implements LinkService {
     }
 
     @Override
-    public Link getLink(Link link) throws BaseConversionException, EntityNotFoundException {
-        String shortLink = link.shortLink();
+    @Cacheable(cacheNames = "link", cacheManager = "RedisCacheManager")
+    public String getLink(String shortLink) throws BaseConversionException, EntityNotFoundException {
         Long id = BaseConversion.fromBase(shortLink);
         if (!linkRepository.existsById(id))
             throw new EntityNotFoundException("the link was not found");
         LinkEntity linkEntity = linkRepository.getReferenceById(id);
-        return new Link(linkEntity.getUrl(), baseUrl + link.shortLink());
+        return linkEntity.getUrl();
     }
 
     @Override
