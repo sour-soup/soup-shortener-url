@@ -9,7 +9,6 @@ import java.util.List;
 public interface LinkRepository extends JpaRepository<LinkEntity, Long> {
     boolean existsByUrlAndUserId(String url, Long userId);
 
-    Long getIdByUrlAndUserId(String url, Long userId);
-
+    LinkEntity findByUrlAndUserId(String url, Long userId);
     List<LinkEntity> getLinkEntitiesByUser(UserEntity user);
 }

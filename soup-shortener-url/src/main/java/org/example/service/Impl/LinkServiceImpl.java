@@ -37,12 +37,11 @@ public class LinkServiceImpl implements LinkService {
         UserEntity userEntity = authorizeRepository.getByLogin(user.login());
 
         if (linkRepository.existsByUrlAndUserId(longLink, userEntity.getId())) {
-            Long id = linkRepository.getIdByUrlAndUserId(longLink, userEntity.getId());
+            Long id = linkRepository.findByUrlAndUserId(longLink, userEntity.getId()).getId();
             String shortLink = BaseConversion.toBase(id);
             return new Link(longLink, shortLink);
         }
         Long id;
-        //Позже заменю на snowflake
         Random random = new Random();
         do {
             id = random.nextLong(MIN_ID, MAX_ID - MIN_ID);
