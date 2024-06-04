@@ -1,10 +1,24 @@
 version: "3.9"
 services:
   postgres:
-    image: postgres:16.3
+    image: postgres:16.3-alpine
+    container_name: postgres_container
     environment:
       POSTGRES_DB: link-shortener
-      POSTGRES_USER: "soup"
-      POSTGRES_PASSWORD: "soup"
+      POSTGRES_USER: soup
+      POSTGRES_PASSWORD: soup
     ports:
       - "5432:5432"
+  app:
+    build:
+      context: .
+      dockerfile: soup-shortener-url/Dockerfile
+    container_name: springboot_app_container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/link-shortener
+      SPRING_DATASOURCE_USERNAME: soup
+      SPRING_DATASOURCE_PASSWORD: soup

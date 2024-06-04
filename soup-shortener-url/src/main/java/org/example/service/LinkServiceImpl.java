@@ -43,7 +43,7 @@ public class LinkServiceImpl implements LinkService {
             Long id;
             Random random = new Random();
             do {
-                id = random.nextLong(MIN_ID, MAX_ID - MIN_ID);
+                id = (long) (MIN_ID + random.nextDouble() * (MAX_ID - MIN_ID));
             } while (linkRepository.existsById(id));
             shortLink = BaseConversion.toBase(id);
             LinkEntity linkEntity = new LinkEntity(id, longLink, userEntity);
