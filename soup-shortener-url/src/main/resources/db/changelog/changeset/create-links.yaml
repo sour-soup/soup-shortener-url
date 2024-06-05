@@ -41,7 +41,7 @@ databaseChangeLog:
             columnDataType: BIGINT
             columnName: visit_count
             tableName: links
-            defaultValueNumeric: 0L
+            defaultValueNumeric: 0
 
         - createIndex:
             tableName: links

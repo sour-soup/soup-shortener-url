@@ -3,3 +3,7 @@ databaseChangeLog:
       file: db/changelog/changeset/create-users.yaml
   - include:
       file: db/changelog/changeset/create-links.yaml
+  - include:
+      file: db/changelog/changeset/insert-users.yaml
+  - include:
+      file: db/changelog/changeset/insert-links.yaml

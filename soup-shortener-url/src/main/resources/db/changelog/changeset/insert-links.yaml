@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0
+      author: admin
+      changes:
+        - sql:
+            dbms: postgresql
+            splitStatements: false
+            sql: |
+              DO $$
+              BEGIN
+                IF NOT EXISTS (SELECT 1 FROM links WHERE id = 1) THEN
+                  INSERT INTO links (id, url, visit_count, user_id) 
+                  VALUES (1, 'https://example.com/1', 0, '926efa58-2e61-422a-9db6-3d4211804c68');
+                END IF;
+              
+                IF NOT EXISTS (SELECT 1 FROM links WHERE id = 7282798) THEN
+                  INSERT INTO links (id, url, visit_count, user_id) 
+                  VALUES (7282798, 'https://codeforces.com/profile/soup', 111, '926efa58-2e61-422a-9db6-3d4211804c68');
+                END IF;
+              
+                IF NOT EXISTS (SELECT 1 FROM links WHERE id = 341) THEN
+                  INSERT INTO links (id, url, visit_count, user_id) 
+                  VALUES (341, 'https://jut.su/naruuto/season-1/episode-18.html', 1, 'a3133855-8984-4431-97da-2efccd6fc7cd');
+                END IF;
+              END $$;

@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0
+      author: admin
+      changes:
+        - sql:
+            dbms: postgresql
+            splitStatements: false
+            sql: |
+              DO $$
+              BEGIN
+                IF NOT EXISTS (SELECT 1 FROM users WHERE id = '926efa58-2e61-422a-9db6-3d4211804c68') THEN
+                  INSERT INTO users (id, login)
+                  VALUES ('926efa58-2e61-422a-9db6-3d4211804c68', 'soup');
+                END IF;
+              
+                IF NOT EXISTS (SELECT 1 FROM users WHERE id = 'a3133855-8984-4431-97da-2efccd6fc7cd') THEN
+                  INSERT INTO users (id, login)
+                  VALUES ('a3133855-8984-4431-97da-2efccd6fc7cd', 'souper');
+                END IF;
+              END $$;
