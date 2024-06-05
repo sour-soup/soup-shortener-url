@@ -1,12 +1,13 @@
 plugins {
     id("java")
-    id("org.springframework.boot") version "3.2.5"
+    id("org.springframework.boot") version "3.2.4"
     id("io.spring.dependency-management") version "1.1.4"
 }
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
 java {
+    sourceCompatibility = JavaVersion.VERSION_17
 }
 
 repositories {
@@ -19,7 +20,12 @@ dependencies {
     implementation("org.projectlombok:lombok")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
     implementation("org.liquibase:liquibase-core")
+
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    implementation("org.springframework.data:spring-data-redis")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+    implementation("io.lettuce:lettuce-core:6.3.2.RELEASE")
+
     implementation("org.springframework.boot:spring-boot-starter-cache")
     implementation("org.springframework.kafka:spring-kafka")
     testImplementation("org.springframework.kafka:spring-kafka-test")

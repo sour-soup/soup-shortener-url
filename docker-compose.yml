@@ -25,6 +25,7 @@ services:
 
   zookeeper:
     image: "confluentinc/cp-zookeeper:latest"
+    container_name: zookeeper_container
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -33,6 +34,7 @@ services:
 
   kafka:
     image: confluentinc/cp-kafka:latest
+    container_name: kafka_container
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
@@ -49,7 +51,7 @@ services:
     build:
       context: .
       dockerfile: soup-shortener-url/Dockerfile
-    container_name: springboot_app_container
+    container_name: springboot_container
     ports:
       - "${APP_PORT}:8080"
     depends_on:
