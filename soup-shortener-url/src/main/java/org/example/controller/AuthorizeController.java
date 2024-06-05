@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.example.exception.AuthorizeException;
 import org.example.service.AuthorizeService;
 import org.example.service.model.User;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Авторизация")
 @RestController
 @RequestMapping(value = "api/v1/authorize")
 public class AuthorizeController {
