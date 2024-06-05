@@ -21,4 +21,4 @@ spring:
       host: redis
       port: ${REDIS_PORT}
   kafka:
-    bootstrap-servers: http://localhost:29092
+    bootstrap-servers: http://kafka:29092
