@@ -1,8 +1,8 @@
 package org.example.service;
 
-import org.example.entity.UserEntity;
 import org.example.exception.AuthorizeException;
 import org.example.repository.AuthorizeRepository;
+import org.example.repository.entity.UserEntity;
 import org.example.service.model.User;
 import org.springframework.stereotype.Service;
 

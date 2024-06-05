@@ -1,83 +1,87 @@
 package org.example.service;
 
-import org.example.entity.LinkEntity;
-import org.example.entity.UserEntity;
 import org.example.exception.EntityNotFoundException;
+import org.example.kafka.VisitLinkSender;
+import org.example.kafka.dto.VisitLinkMessage;
 import org.example.repository.AuthorizeRepository;
 import org.example.repository.LinkRepository;
+import org.example.repository.entity.LinkEntity;
+import org.example.repository.entity.UserEntity;
 import org.example.service.model.Link;
 import org.example.service.model.User;
 import org.example.utils.BaseConversion;
-import org.example.utils.BaseConversionException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 @Service
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class LinkServiceImpl implements LinkService {
     @Value("${base.url}")
     private String baseUrl;
-    private final LinkRepository linkRepository;
-    private final AuthorizeRepository authorizeRepository;
     private static final Long MIN_ID = 1L;
-    private static final Long MAX_ID = (long) Math.pow(62, 5);
+    private static final Long MAX_ID = (long) Math.pow(64, 5);
 
-    public LinkServiceImpl(LinkRepository linkRepository, AuthorizeRepository authorizeRepository) {
-        this.linkRepository = linkRepository;
-        this.authorizeRepository = authorizeRepository;
-    }
+    @Autowired
+    private LinkServiceImpl self;
+    @Autowired
+    private LinkRepository linkRepository;
+    @Autowired
+    private AuthorizeRepository authorizeRepository;
+    @Autowired
+    private VisitLinkSender visitLinkSender;
+
 
     @Override
-    public Link addLink(User user, Link link) throws BaseConversionException {
-        String longLink = link.longLink();
+    public Link addLink(User user, String longLink) {
         UserEntity userEntity = authorizeRepository.getByLogin(user.login());
-
         String shortLink;
+        Long id;
         if (linkRepository.existsByUrlAndUserId(longLink, userEntity.getId())) {
-            Long id = linkRepository.findByUrlAndUserId(longLink, userEntity.getId()).getId();
+            id = linkRepository.findByUrlAndUserId(longLink, userEntity.getId()).getId();
             shortLink = BaseConversion.toBase(id);
         } else {
-            Long id;
             Random random = new Random();
             do {
                 id = (long) (MIN_ID + random.nextDouble() * (MAX_ID - MIN_ID));
             } while (linkRepository.existsById(id));
             shortLink = BaseConversion.toBase(id);
-            LinkEntity linkEntity = new LinkEntity(id, longLink, userEntity);
+            LinkEntity linkEntity = new LinkEntity(id, longLink, 0L, userEntity);
             linkRepository.save(linkEntity);
         }
-        return new Link(longLink, baseUrl + shortLink);
+        LinkEntity linkEntity = linkRepository.getReferenceById(id);
+        return new Link(linkEntity.getUrl(), baseUrl + shortLink, linkEntity.getVisitCount());
+    }
+
+    @Cacheable(cacheNames = "link", cacheManager = "RedisCacheManager")
+    public Link getLink(Long id) {
+        LinkEntity linkEntity = linkRepository.getReferenceById(id);
+        String shortLink = baseUrl + BaseConversion.toBase(linkEntity.getId());
+        return new Link(linkEntity.getUrl(), shortLink, linkEntity.getVisitCount());
     }
 
     @Override
-    @Cacheable(cacheNames = "link", cacheManager = "RedisCacheManager")
-    public String getLink(String shortLink) throws BaseConversionException, EntityNotFoundException {
+    public Link getLink(String shortLink) throws EntityNotFoundException {
         Long id = BaseConversion.fromBase(shortLink);
-        if (!linkRepository.existsById(id))
-            throw new EntityNotFoundException("the link was not found");
-        LinkEntity linkEntity = linkRepository.getReferenceById(id);
-        return linkEntity.getUrl();
+        System.out.println("link id: " + id);
+        if (!linkRepository.existsById(id)) throw new EntityNotFoundException("the link was not found");
+        visitLinkSender.sendMessage(new VisitLinkMessage(id));
+        return self.getLink(id);
     }
 
     @Override
     public List<Link> getUserLinks(User user) {
-        try {
-            UserEntity userEntity = authorizeRepository.getByLogin(user.login());
-            List<LinkEntity> userLinkEntities = linkRepository.getLinkEntitiesByUser(userEntity);
-            List<Link> userLinks = new ArrayList<>();
-            for (LinkEntity linkEntity : userLinkEntities) {
-                String shortLink = baseUrl + BaseConversion.toBase(linkEntity.getId());
-                Link link = new Link(shortLink, linkEntity.getUrl());
-                userLinks.add(link);
-            }
-            return userLinks;
-        } catch (BaseConversionException e) {
-            throw new RuntimeException(e);
-        }
-
+        UserEntity userEntity = authorizeRepository.getByLogin(user.login());
+        List<LinkEntity> userLinkEntities = linkRepository.getLinkEntitiesByUser(userEntity);
+        return userLinkEntities.stream().map(linkEntity -> {
+            String shortLink = baseUrl + BaseConversion.toBase(linkEntity.getId());
+            return new Link(linkEntity.getUrl(), shortLink, linkEntity.getVisitCount());
+        }).toList();
     }
 }

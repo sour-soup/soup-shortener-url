@@ -1,9 +1,7 @@
 package org.example.controller;
 
 import org.example.exception.EntityNotFoundException;
-import org.example.exception.ParseShortLinkException;
 import org.example.service.LinkService;
-import org.example.utils.BaseConversionException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +16,9 @@ public class RedirectController {
     }
 
     @GetMapping(value = "/{shortLink}")
-    public RedirectView getLink(@PathVariable("shortLink") String shortLink) throws BaseConversionException, EntityNotFoundException, ParseShortLinkException {
-        String longLink = linkService.getLink(shortLink);
+    public RedirectView getLink(@PathVariable("shortLink") String shortLink) throws EntityNotFoundException {
+        System.out.println("shortLink: " + shortLink);
+        String longLink = linkService.getLink(shortLink).longLink();
         return new RedirectView(longLink);
     }
 }

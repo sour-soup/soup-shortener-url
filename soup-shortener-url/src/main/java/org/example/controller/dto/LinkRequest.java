@@ -2,5 +2,5 @@ package org.example.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record UserDto(@JsonProperty String login) {
+public record LinkRequest(@JsonProperty String link) {
 }
