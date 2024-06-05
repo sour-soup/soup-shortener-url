@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -47,7 +49,7 @@ public class LinkServiceImpl implements LinkService {
                 id = (long) (MIN_ID + random.nextDouble() * (MAX_ID - MIN_ID));
             } while (linkRepository.existsById(id));
             shortLink = BaseConversion.toBase(id);
-            LinkEntity linkEntity = new LinkEntity(id, longLink, userEntity);
+            LinkEntity linkEntity = new LinkEntity(id, longLink, Instant.now(), userEntity);
             linkRepository.save(linkEntity);
         }
         return new Link(longLink, baseUrl + shortLink);
@@ -57,11 +59,22 @@ public class LinkServiceImpl implements LinkService {
     @Cacheable(cacheNames = "link", cacheManager = "RedisCacheManager")
     public String getLink(String shortLink) throws BaseConversionException, EntityNotFoundException {
         Long id = BaseConversion.fromBase(shortLink);
-        if (!linkRepository.existsById(id))
-            throw new EntityNotFoundException("the link was not found");
+        if (!linkRepository.existsById(id)) throw new EntityNotFoundException("the link was not found");
         LinkEntity linkEntity = linkRepository.getReferenceById(id);
         return linkEntity.getUrl();
     }
+
+    @Override
+    public void deleteLink(String shortLink) throws BaseConversionException {
+        Long id = BaseConversion.fromBase(shortLink);
+        linkRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Long> getAllNotUpdatedForAMonth() {
+        return linkRepository.getIdsBetweenUpdatedAt(Instant.now().minus(30, ChronoUnit.DAYS), Instant.now());
+    }
+
 
     @Override
     public List<Link> getUserLinks(User user) {

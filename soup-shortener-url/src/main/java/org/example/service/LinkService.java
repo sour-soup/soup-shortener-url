@@ -13,5 +13,8 @@ public interface LinkService {
 
     String getLink(String shortLink) throws BaseConversionException, EntityNotFoundException, ParseShortLinkException;
 
+    void deleteLink(String shortLink) throws BaseConversionException, EntityNotFoundException, ParseShortLinkException;
     List<Link> getUserLinks(User user);
+
+    List<Long> getAllNotUpdatedForAMonth();
 }
