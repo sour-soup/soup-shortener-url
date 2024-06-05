@@ -1,13 +1,11 @@
-package org.example.entity;
+package org.example.repository.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.Instant;
 
 @Getter
 @Setter
@@ -21,9 +19,8 @@ public class LinkEntity {
     private Long id;
     @Column(nullable = false, length = 300)
     private String url;
-    @UpdateTimestamp
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
+    @Column(name = "visit_count", nullable = false)
+    private Long visitCount = 0L;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id")
     private UserEntity user;

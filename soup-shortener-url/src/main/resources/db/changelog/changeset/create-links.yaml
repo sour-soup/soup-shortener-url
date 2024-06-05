@@ -8,18 +8,44 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: bigint
+                  type: BIGINT
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: user_id
-                  type: bigint
-                  constraints:
-                    foreignKeyName: fk_user_id
-                    references: users(id)
-              - column:
                   name: url
-                  type: varchar(300)
+                  type: VARCHAR(300)
                   constraints:
                     nullable: false
+              - column:
+                  name: visit_count
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: links
+            baseColumnNames: user_id
+            constraintName: fk_links_user
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: CASCADE
+            onUpdate: CASCADE
+
+        - addDefaultValue:
+            columnDataType: BIGINT
+            columnName: visit_count
+            tableName: links
+            defaultValueNumeric: 0L
+
+        - createIndex:
+            tableName: links
+            columns:
+              - column:
+                  name: user_id
+            indexName: idx_links_user_id
