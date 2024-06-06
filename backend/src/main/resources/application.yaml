@@ -26,12 +26,6 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          #          issuer-uri: http://localhost:${KEYCLOAK_PORT}/realms/soup
-          jwk-set-uri: http://keycloak:${KEYCLOAK_PORT}/auth/realms/${KEYCLOAK_REALM}/protocol/openid-connect/certs
-keycloak:
-  realm: ${KEYCLOAK_REALM}
-  auth-server-url: http://keycloak:${KEYCLOAK_PORT}/auth
-  resource: ${KEYCLOAK_CLIENT_ID}
-  credentials:
-    secret: ${KEYCLOAK_CLIENT_SECRET}
-  bearer-only: true
+          #          issuer-uri: http://keycloak:${KEYCLOAK_PORT}/realms/${KEYCLOAK_REALM}
+          jwk-set-uri: http://keycloak:8080/realms/soup/protocol/openid-connect/certs
+

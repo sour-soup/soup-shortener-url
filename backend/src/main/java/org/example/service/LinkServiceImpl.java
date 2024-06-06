@@ -3,8 +3,8 @@ package org.example.service;
 import org.example.exception.EntityNotFoundException;
 import org.example.kafka.VisitLinkSender;
 import org.example.kafka.dto.VisitLinkMessage;
-import org.example.repository.AuthorizeRepository;
 import org.example.repository.LinkRepository;
+import org.example.repository.UserRepository;
 import org.example.repository.entity.LinkEntity;
 import org.example.repository.entity.UserEntity;
 import org.example.service.model.Link;
@@ -33,14 +33,17 @@ public class LinkServiceImpl implements LinkService {
     @Autowired
     private LinkRepository linkRepository;
     @Autowired
-    private AuthorizeRepository authorizeRepository;
+    private UserRepository userRepository;
     @Autowired
     private VisitLinkSender visitLinkSender;
 
 
     @Override
     public Link addLink(User user, String longLink) {
-        UserEntity userEntity = authorizeRepository.getByLogin(user.login());
+        if (!userRepository.existsById(user.id())) {
+            userRepository.save(new UserEntity(user.id(), user.username()));
+        }
+        UserEntity userEntity = userRepository.getReferenceById(user.id());
         String shortLink;
         Long id;
         if (linkRepository.existsByUrlAndUserId(longLink, userEntity.getId())) {
@@ -77,7 +80,10 @@ public class LinkServiceImpl implements LinkService {
 
     @Override
     public List<Link> getUserLinks(User user) {
-        UserEntity userEntity = authorizeRepository.getByLogin(user.login());
+        if (!userRepository.existsById(user.id())) {
+            userRepository.save(new UserEntity(user.id(), user.username()));
+        }
+        UserEntity userEntity = userRepository.getReferenceById(user.id());
         List<LinkEntity> userLinkEntities = linkRepository.getLinkEntitiesByUser(userEntity);
         return userLinkEntities.stream().map(linkEntity -> {
             String shortLink = baseUrl + BaseConversion.toBase(linkEntity.getId());

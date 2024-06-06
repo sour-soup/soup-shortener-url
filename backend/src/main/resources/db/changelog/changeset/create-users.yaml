@@ -13,7 +13,7 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: login
+                  name: username
                   type: VARCHAR(100)
                   constraints:
                     nullable: false
@@ -23,6 +23,6 @@ databaseChangeLog:
             tableName: users
             columns:
               - column:
-                  name: login
-            indexName: idx_users_login
+                  name: username
+            indexName: idx_users_username
             unique: true

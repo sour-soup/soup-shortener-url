@@ -17,7 +17,7 @@ databaseChangeLog:
                   value: 0
               - column:
                   name: user_id
-                  value: "926efa58-2e61-422a-9db6-3d4211804c68"
+                  value: "67d8ac6e-1f00-4770-99c3-fd979e903a92"
         - insert:
             tableName: links
             columns:
@@ -32,19 +32,4 @@ databaseChangeLog:
                   value: 111
               - column:
                   name: user_id
-                  value: "926efa58-2e61-422a-9db6-3d4211804c68"
-        - insert:
-            tableName: links
-            columns:
-              - column:
-                  name: id
-                  value: 341
-              - column:
-                  name: url
-                  value: "https://jut.su/naruuto/season-1/episode-18.html"
-              - column:
-                  name: visit_count
-                  value: 1
-              - column:
-                  name: user_id
-                  value: "a3133855-8984-4431-97da-2efccd6fc7cd"
+                  value: "67d8ac6e-1f00-4770-99c3-fd979e903a92"

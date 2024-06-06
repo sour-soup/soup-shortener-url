@@ -17,11 +17,13 @@ import java.util.UUID;
 @Table(name = "users")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
     private UUID id;
-    @Column(name = "login", nullable = false, length = 100, unique = true)
-    private String login;
+    @Column(name = "username", nullable = false, length = 100, unique = true)
+    private String username;
     @OneToMany(mappedBy = "user")
     private List<LinkEntity> links;
+
+    public UserEntity(UUID id, String username) {
+    }
 }

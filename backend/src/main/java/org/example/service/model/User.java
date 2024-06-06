@@ -1,4 +1,6 @@
 package org.example.service.model;
 
-public record User(String login) {
+import java.util.UUID;
+
+public record User(UUID id, String username) {
 }

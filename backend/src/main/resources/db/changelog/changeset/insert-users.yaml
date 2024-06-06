@@ -8,16 +8,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  value: "926efa58-2e61-422a-9db6-3d4211804c68"
+                  value: "67d8ac6e-1f00-4770-99c3-fd979e903a92"
               - column:
-                  name: login
+                  name: username
                   value: "soup"
-        - insert:
-            tableName: users
-            columns:
-              - column:
-                  name: id
-                  value: "a3133855-8984-4431-97da-2efccd6fc7cd"
-              - column:
-                  name: login
-                  value: "souper"
