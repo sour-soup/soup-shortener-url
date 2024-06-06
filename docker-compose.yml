@@ -10,18 +10,18 @@ services:
     ports:
       - ${DB_PORT}:5432
     env_file:
-      - ./local.env
+      - .env
 
   redis:
     image: redis:7.2.5-alpine
     container_name: redis_container
     ports:
-      - "${REDIS_PORT}:6379"
+      - ${REDIS_PORT}:6379
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     env_file:
-      - ./local.env
+      - .env
 
   zookeeper:
     image: "confluentinc/cp-zookeeper:latest"
@@ -30,7 +30,7 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
     ports:
-      - "2181:2181"
+      - ${ZOOKEEPER_PORT}:2181
 
   kafka:
     image: confluentinc/cp-kafka:latest
@@ -43,20 +43,52 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
     ports:
-      - 29092:29092
+      - ${KAFKA_PORT}:29092
     depends_on:
       - zookeeper
 
-  app:
+  keycloak-db:
+    image: postgres:16.3-alpine
+    container_name: keycloak-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0.7
+    container_name: keycloak
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://keycloak-db:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: password
+
+      KC_LOG_LEVEL: info
+      KC_METRICS_ENABLED: true
+      KC_HEALTH_ENABLED: true
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command:
+      - start-dev
+    depends_on:
+      - keycloak-db
+    ports:
+      - ${KEYCLOAK_PORT}:8080
+
+  backend:
     build:
-      context: .
-      dockerfile: soup-shortener-url/Dockerfile
-    container_name: springboot_container
+      context: backend/.
+      dockerfile: Dockerfile
+    container_name: springboot
     ports:
       - "${APP_PORT}:8080"
     depends_on:
       - postgres
       - redis
+      - keycloak
     environment:
       SPRING_DATASOURCE_URL: ${DB_URL}
       SPRING_DATASOURCE_USERNAME: ${DB_USER}
@@ -64,4 +96,7 @@ services:
       SPRING_REDIS_HOST: redis
       SPRING_REDIS_PORT: ${REDIS_PORT}
     env_file:
-      - ./local.env
+      - .env
+
+volumes:
+  postgres_data:

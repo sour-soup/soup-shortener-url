@@ -1,0 +1,8 @@
+POST http://localhost:8282/realms/soup/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type = password &
+client_id = shortener-url-api &
+client_secret = 6qsHtRHIYexSXikzjCy1gvUcTrtKTcQ2 &
+username = soup &
+password = soup

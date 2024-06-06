@@ -1,0 +1,31 @@
+base:
+  url: http://localhost:${APP_PORT}/
+
+spring:
+  application:
+    name: soup-shortener-url
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  jpa:
+    hibernate:
+      ddl-auto: none
+  cache:
+    type: redis
+  data:
+    redis:
+      host: redis
+      port: ${REDIS_PORT}
+  kafka:
+    bootstrap-servers: http://kafka:${KAFKA_PORT}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          #          issuer-uri: http://keycloak:${KEYCLOAK_PORT}/realms/${KEYCLOAK_REALM}
+          jwk-set-uri: http://keycloak:8080/realms/soup/protocol/openid-connect/certs
+

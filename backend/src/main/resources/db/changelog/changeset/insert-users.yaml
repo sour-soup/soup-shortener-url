@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-users
+      author: soup
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: "67d8ac6e-1f00-4770-99c3-fd979e903a92"
+              - column:
+                  name: username
+                  value: "soup"
