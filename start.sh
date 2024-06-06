@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cd soup-shortener-url || exit
+cd backend || exit
 ./gradlew clean
 ./gradlew bootJar
 cd ..
-docker-compose --env-file local.env stop
-docker-compose --env-file local.env up --build -d
+docker-compose --env-file .env stop
+docker-compose --env-file .env up --build -d

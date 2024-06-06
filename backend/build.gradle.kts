@@ -17,23 +17,27 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.projectlombok:lombok")
+    implementation("org.springframework.boot:spring-boot-starter-web-services")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
-    implementation("org.liquibase:liquibase-core")
 
+    implementation("org.liquibase:liquibase-core")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.data:spring-data-redis")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
     implementation("io.lettuce:lettuce-core:6.3.2.RELEASE")
-
     implementation("org.springframework.boot:spring-boot-starter-cache")
+
     implementation("org.springframework.kafka:spring-kafka")
     testImplementation("org.springframework.kafka:spring-kafka-test")
-    implementation("net.javacrumbs.shedlock:shedlock-spring:5.13.0")
-    implementation("net.javacrumbs.shedlock:shedlock-provider-jdbc-template:5.13.0")
 
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+    implementation("org.keycloak:keycloak-spring-boot-starter:24.0.5")
+    testImplementation("org.springframework.security:spring-security-test")
+
+    implementation("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
-    implementation("org.springframework.boot:spring-boot-starter-web-services")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
